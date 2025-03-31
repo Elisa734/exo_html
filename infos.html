@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités - Math-Info</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <style>
+    :root {
+            --bleu: #3332c5;
+            --vert: #0cbf0c;
+            --bleu-clair: #e6e6ff;
+            --vert-clair: #e6ffe6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bleu-clair);
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 80px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        
+        .navbar-brand h2 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+        
+        .login-btn {
+            background-color: white !important;
+            color: var(--bleu) !important;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Bande d'annonces */
+        .marquee-container {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 12px 0;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 25s linear infinite;
+            padding-right: 50px;
+        }
+        
+        .marquee-item {
+            display: inline-block;
+            margin-right: 40px;
+            vertical-align: middle;
+        }
+        
+        .marquee-item i {
+            margin-right: 8px;
+            color: #fff;
+        }
+        
+        .urgent {
+            color: #ffeb3b;
+            font-weight: bold;
+            text-shadow: 0 0 3px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(51, 50, 197, 0.2);
+        }
+        
+        h1 {
+            color: var(--bleu);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            border-radius: 3px;
+        }
+        
+        /* Cartes d'actualités */
+        .news-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            border-top: 3px solid var(--bleu);
+            border-bottom: 3px solid var(--vert);
+            background: white;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .news-card .card-body {
+            padding: 20px;
+        }
+        
+        .news-card .card-title {
+            color: var(--bleu);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .news-card .date {
+            color: var(--vert);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .news-card .btn-primary {
+            background-color: var(--bleu);
+            border-color: var(--bleu);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        .news-card .btn-primary:hover {
+            background-color: #2a29a8;
+            border-color: #2a29a8;
+        }
+        
+        /* Annonces importantes */
+        .important-announcement {
+            background: rgba(230, 255, 230, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--vert);
+        }
+        
+        .important-announcement h3 {
+            color: var(--bleu);
+            margin-bottom: 15px;
+        }
+        
+        .important-announcement .btn-outline-primary {
+            color: var(--bleu);
+            border-color: var(--bleu);
+            border-radius: 50px;
+        }
+        
+        .important-announcement .btn-outline-primary:hover {
+            background-color: var(--bleu);
+            color: white;
+        }
+        
+        /* Calendrier */
+        #calendar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .fc-event {
+            background-color: var(--bleu);
+            border-color: var(--bleu);
+        }
+        
+        .fc-event:hover {
+            background-color: #2a29a8;
+            border-color: #2a29a8;
+        }
+        
+        .fc-button-primary {
+            background-color: var(--bleu);
+            border-color: var(--bleu);
+        }
+        
+        .fc-button-primary:hover {
+            background-color: #2a29a8;
+            border-color: #2a29a8;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 0 8px white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-brand h2 {
+                font-size: 1.2rem;
+            }
+            
+            .marquee-item {
+                margin-right: 20px;
+                font-size: 0.9rem;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            .news-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="index.html" class="navbar-brand p-0 d-flex flex-column align-items-center">
+                        <img src="images/logomi.png" class="logo" alt="Logo">
+                        <h2>Math-Info</h2>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-0 mx-lg-auto">
+                            <a href="index.html" class="nav-item nav-link">Accueil</a>
+                            <div class="nav-item dropdown">
+                                <a href="apropos.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    À propos
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="apropos.html" class="dropdown-item">Notre mission</a>
+                                    <a href="apropos.html" class="dropdown-item">L'équipe</a>
+                                </div>
+                            </div>
+                            <a href="niveaux.html" class="nav-item nav-link">Niveaux</a>
+                            <a href="infos.html" class="nav-item nav-link active">Actualités</a>
+                            <a href="contact.html" class="nav-item nav-link">Contacts</a>
+                            <div class="nav-btn px-3">
+                                <button class="btn bg-primary text-white py-2 px-4 ms-3 flex-shrink-0 login-btn">SE CONNECTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bande d'annonces dynamique -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item urgent">
+                <i class="fas fa-exclamation-circle"></i> URGENT : Dernier jour pour les inscriptions en L1 - Clôture à 18h
+            </span>
+            
+            <span class="marquee-item">
+                <i class="fas fa-calendar-alt"></i> Conférence "Nouvelles technologies en IA" - 15/10 - Amphi A
+            </span>
+            
+            <span class="marquee-item">
+                <i class="fas fa-book"></i> Bibliothèque ouverte jusqu'à 22h pendant les examens
+            </span>
+            
+            <span class="marquee-item">
+                <i class="fas fa-users"></i> Forum des associations étudiantes - 5/10 - Hall central
+            </span>
+            
+            <span class="marquee-item">
+                <i class="fas fa-globe-europe"></i> Candidatures Erasmus+ : dépôt avant le 15/11
+            </span>
+            
+            <span class="marquee-item">
+                <i class="fas fa-chalkboard-teacher"></i> Ateliers méthodologie : inscriptions ouvertes
+            </span>
+        </div>
+    </div>
+
+    <main class="container">
+        <h1><i class="fas fa-newspaper me-2"></i> Actualités</h1>
+        
+        <!-- Cartes d'actualités -->
+        <div class="row">
+            <!-- Actualité 1 -->
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Conférence sur l'IA</h5>
+                        <span class="date"><i class="far fa-calendar-alt me-2"></i>1er avril 2025</span>
+                        <p class="card-text">Découvrez les dernières avancées en intelligence artificielle avec nos experts invités. Ouvert à tous les étudiants.</p>
+                        <a href="#" class="btn btn-primary">Lire plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actualité 2 -->
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Inscriptions 2025-2026</h5>
+                        <span class="date"><i class="far fa-calendar-alt me-2"></i>5 avril 2025</span>
+                        <p class="card-text">Les inscriptions pour l'année universitaire 2025-2026 sont ouvertes. Dépêchez-vous, places limitées !</p>
+                        <a href="#" class="btn btn-primary">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actualité 3 -->
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Portes Ouvertes</h5>
+                        <span class="date"><i class="far fa-calendar-alt me-2"></i>10 avril 2025</span>
+                        <p class="card-text">Venez découvrir nos locaux, nos formations et rencontrer nos enseignants lors de cette journée spéciale.</p>
+                        <a href="#" class="btn btn-primary">Programme</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Annonces importantes -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="important-announcement">
+                    <h3><i class="fas fa-bullhorn me-2"></i> Rentrée 2025</h3>
+                    <p>Les inscriptions pour la rentrée universitaire sont ouvertes jusqu'au 30 septembre. Dépôt des dossiers en ligne sur notre plateforme.</p>
+                    <a href="#" class="btn btn-outline-primary">En savoir plus</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="important-announcement">
+                    <h3><i class="fas fa-laptop-code me-2"></i> Hackathon Math-Info</h3>
+                    <p>Notre traditionnel hackathon annuel aura lieu le 15 novembre. Thème cette année : "IA pour le développement durable".</p>
+                    <a href="#" class="btn btn-outline-primary">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendrier universitaire -->
+        <div id="calendar" class="mt-5"></div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+                    <p>© 2025 Université Math-Info. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-md-end text-center">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        // Calendrier
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    { 
+                        title: 'Conférence IA', 
+                        start: '2025-04-01',
+                        backgroundColor: '#3332c5',
+                        borderColor: '#3332c5'
+                    },
+                    { 
+                        title: 'Inscriptions', 
+                        start: '2025-04-05',
+                        end: '2025-04-30',
+                        backgroundColor: '#0cbf0c',
+                        borderColor: '#0cbf0c'
+                    },
+                    { 
+                        title: 'Portes Ouvertes', 
+                        start: '2025-04-10',
+                        backgroundColor: '#3332c5',
+                        borderColor: '#3332c5'
+                    },
+                    { 
+                        title: 'Examens L1', 
+                        start: '2025-05-15',
+                        end: '2025-05-30',
+                        backgroundColor: '#ff5722',
+                        borderColor: '#ff5722'
+                    },
+                    { 
+                        title: 'Rentrée Universitaire', 
+                        start: '2025-10-01',
+                        backgroundColor: '#0cbf0c',
+                        borderColor: '#0cbf0c'
+                    },
+                    { 
+                        title: 'Hackathon', 
+                        start: '2025-11-15',
+                        end: '2025-11-17',
+                        backgroundColor: '#3332c5',
+                        borderColor: '#3332c5'
+                    }
+                ],
+                eventClick: function(info) {
+                    alert('Événement: ' + info.event.title);
+                }
+            });
+            calendar.render();
+        });
+
+        // Rotation des messages de la bande d'annonces (optionnel)
+        const marqueeMessages = [
+            [
+                {icon: "fa-exclamation-circle", text: "URGENT : Dernier jour pour les inscriptions en L1 - Clôture à 18h", urgent: true},
+                {icon: "fa-calendar-alt", text: "Conférence 'Nouvelles technologies en IA' - 15/10 - Amphi A"},
+                {icon: "fa-book", text: "Bibliothèque ouverte jusqu'à 22h pendant les examens"}
+            ],
+            [
+                {icon: "fa-users", text: "Forum des associations étudiantes - 5/10 - Hall central"},
+                {icon: "fa-globe-europe", text: "Candidatures Erasmus+ : dépôt avant le 15/11"},
+                {icon: "fa-chalkboard-teacher", text: "Ateliers méthodologie : inscriptions ouvertes"}
+            ],
+            [
+                {icon: "fa-graduation-cap", text: "Remise des diplômes : 25 juin - Grand Amphi"},
+                {icon: "fa-microscope", text: "Journée recherche : présentations des travaux étudiants"},
+                {icon: "fa-bus", text: "Navettes gratuites pour le campus ce week-end"}
+            ]
+        ];
+        
+        function updateMarquee() {
+            const randomSet = Math.floor(Math.random() * marqueeMessages.length);
+            const marqueeContent = document.querySelector('.marquee-content');
+            
+            let html = '';
+            marqueeMessages[randomSet].forEach(item => {
+                html += `<span class="marquee-item ${item.urgent ? 'urgent' : ''}">
+                    <i class="fas ${item.icon}"></i> ${item.text}
+                </span>`;
+            });
+            
+            marqueeContent.innerHTML = html;
+        }
+        
+        // Changer les messages toutes les 2 minutes (optionnel)
+        setInterval(updateMarquee, 120000);
+    </script>
+</body>
+</html>

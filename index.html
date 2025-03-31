@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math-Info - Accueil</title>
+    <!-- Bootstrap CSS local -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logomi.png">
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="css/page.css">
+</head>
+
+<body class="show-popup">
+    <!-- Header -->
+    <header>
+        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="index.html" class="navbar-brand p-0 d-flex flex-column align-items-center">
+                        <img src="images/logomi.png" class="logo" alt="Logo Math-Info">
+                        <h2>Math-Info</h2>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fas fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-0 mx-lg-auto">
+                            <a href="#" class="nav-item nav-link active">Accueil</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    À propos
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="apropos.html" class="dropdown-item">Notre mission</a>
+                                    <a href="apropos.html" class="dropdown-item">L'équipe</a>
+                                </div>
+                            </div>
+                            <a href="niveaux.html" class="nav-item nav-link">Niveaux</a>
+                            <a href="infos.html" class="nav-item nav-link">Actualités</a>
+                            <a href="contact.html" class="nav-item nav-link">Contacts</a>
+                            <div class="nav-btn px-3">
+                                <button class="btn bg-primary text-white py-2 px-4 ms-3 flex-shrink-0 login-btn">SE CONNECTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slider Section -->
+    <section id="slider" class="bg-dark">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item crs-img-1 active">
+                    <div class="container">
+                        <div class="carousel-caption pb-5 mb-5 text-start">
+                            <h2 class="display-4 text-light">Bienvenue à ARCHIVE-MI</h2>
+                            <p class="lead">Découvrez notre plateforme d'apprentissage des mathématiques et informatique.</p>
+                            <a href="pages/apropos.html" class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item crs-img-2">
+                    <div class="container">
+                        <div class="carousel-caption mb-5 text-center">
+                            <h2 class="display-4 text-light">Apprentissage Personnalisé</h2>
+                            <p>Des cours adaptés à tous les niveaux, du débutant à l'expert.</p>
+                            <a href="pages/niveaux.html" class="btn btn-primary">Nos programmes</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item crs-img-3">
+                    <div class="container">
+                        <div class="carousel-caption pb-5 mb-5 text-end">
+                            <h2 class="display-4 text-light">Rejoignez notre communauté</h2>
+                            <p>Échangez avec des passionnés et des experts en Math-Info.</p>
+                            <a href="#" class="btn btn-primary">S'inscrire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-5">
+        <h1 class="text-center text-primary">Archive-Mi</h1>
+        <p class="lead text-center">Votre portail pour les étudiants en Mathématiques et Informatique.</p>
+        <div class="text-center mt-4">
+            <a href="pages/niveaux.html" class="btn btn-success">Découvrir les niveaux</a>
+        </div>
+
+        <!-- Showcase Section -->
+        <section class="showcase mt-5">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-cogs fa-3x text-primary"></i>
+                    <h3 class="text-primary">Pédagogie Innovante</h3>
+                    <p>Nos méthodes d'enseignement optimisent votre compréhension.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-cloud fa-3x text-success"></i>
+                    <h3 class="text-primary">Ressources en Ligne</h3>
+                    <p>Accédez à nos contenus pédagogiques partout, tout le temps.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-users fa-3x text-primary"></i>
+                    <h3 class="text-primary">Communauté Active</h3>
+                    <p>Échangez avec d'autres apprenants et enseignants.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Features Section -->
+    <section class="tabs features4 bootcampm5 py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-wrapper bg-primary text-white p-4 rounded-4">
+                        <div class="text-wrapper">
+                            <h1 class="card-title mb-4">Fonctionnalités Épatantes</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="nav nav-tabs flex-column">
+                                    <li class="nav-item">
+                                        <a><h3><i class="fas fa-bolt me-2"></i>Téléchargement Rapide</h3></a>
+                                    </li>
+                                    <li>
+                                        <a><h3><i class="fas fa-infinity me-2"></i>Accès Illimité</h3></a>
+                                    </li>
+                                    <li>
+                                        <a><h3><i class="fas fa-headset me-2"></i>Support 24/7</h3></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="tab-content">
+                                    <div id="tab1" class="tab-pane fade show active">
+                                        <div class="img-box">
+                                            <img src="images/mlarge-livres.jpg" alt="Fonctionnalités" class="img-fluid rounded-3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="pages/apropos.html" class="btn btn-light">En Savoir Plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Text Section -->
+    <section class="text_section py-5">
+        <div class="container">
+            <p class="display-1 text-muted text-center">Archive-Mi</p>
+            <h2 class="text-center">Ce Site est votre meilleur ami pour les études! <br> Ne ratez pas cette chance!</h2>
+        </div>
+    </section>
+
+    <!-- Image Grid Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="image-container position-relative">
+                            <img src="images/documents-4625654_1280.webp" class="card-img-top" alt="Cours">
+                            <div class="content-overlay">
+                                <a href="pages/niveaux.html" class="image-btn">COURS</a>
+                                <p class="image-caption">Cours pour tous les niveaux</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="image-container position-relative">
+                            <img src="images/test.webp" class="card-img-top" alt="Examens">
+                            <div class="content-overlay">
+                                <a href="pages/niveaux.html" class="image-btn">EXAMEN et CORRECTION</a>
+                                <p class="image-caption">Pour tout les niveaux</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="image-container position-relative">
+                            <img src="images/td.jpg" class="card-img-top" alt="TD">
+                            <div class="content-overlay">
+                                <a href="pages/niveaux.html" class="image-btn">TD</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="image-container position-relative">
+                            <img src="images/composer.webp" class="card-img-top" alt="Devoirs">
+                            <div class="content-overlay">
+                                <a href="pages/niveaux.html" class="image-btn">Devoir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="student-reviews py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Avis Étudiants</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="img-box me-4">
+                                <img src="images/perssouri.avif" class="rounded-circle" width="80" height="80" alt="Amina">
+                            </div>
+                            <div>
+                                <p class="card-text">ARCHIVE-MI a changé ma vie d'étudiant ! Je ne peux plus m'en passer !</p>
+                                <p class="card-name fw-bold">Amina</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="img-box me-4">
+                                <img src="images/perssouri.avif" class="rounded-circle" width="80" height="80" alt="Youssef">
+                            </div>
+                            <div>
+                                <p class="card-text">Les ressources sont incroyables ! Merci ARCHIVE-MI !</p>
+                                <p class="card-name fw-bold">Youssef</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section>
+        <video autoplay muted loop style="width: 100vw;height: 100vh;object-fit: contain;background: white; height: auto;" id="maVideo">
+            <source src="video/ARCHIVEMI (2).mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1><br>Rejoignez-Nous</h1>
+                    <p><h3>Ne manquez pas l'occasion de télécharger des ressources inestimables pour vos études. Inscrivez-vous maintenant et boostez vos compétences en mathématiques et informatique </h3></p>
+                    <a href="#" class="btn btn-light">S'inscrire</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/perssouri.avif" class="img-fluid rounded-3" alt="Rejoignez-nous">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="images/student-732012_1280.jpg" class="img-fluid rounded-3" alt="Pourquoi nous choisir">
+                </div>
+                <div class="col-lg-6">
+                    <h2>Pourquoi Choisir Notre Site ?</h2>
+                    <p>Nous offrons des ressources gratuites et de qualité pour tous les étudiants en mathématiques et informatique. Rejoignez notre communauté dynamique dès aujourd'hui !</p>
+                    
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Maths</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Informatique</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Ressources</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Étudiants</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Gratuit</li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-primary mt-3">En Savoir Plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dk-footer bg-dark text-white pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="dk-footer-box-info">
+                        <a href="index.html" class="footer-logo d-inline-block mb-3">
+                            <img src="images/télécharger (2).jpeg" alt="Footer Logo" class="img-fluid" width="100">
+                        </a>
+                        <p class="footer-info-text">
+                           ARCHIVE-MI - Votre plateforme d'excellence pour les Mathématiques et l'Informatique
+                        </p>
+                        <div class="footer-social-link">
+                            <h4>Suivez-nous</h4>
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="#" class="btn btn-primary btn-sm rounded-circle"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="btn btn-info btn-sm rounded-circle"><i class="fab fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="btn btn-danger btn-sm rounded-circle"><i class="fab fa-instagram"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="btn btn-primary btn-sm rounded-circle"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="footer-widget">
+                        <div class="section-heading">
+                            <h3>Liens rapides</h3>
+                            <div class="animate-border border-white my-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="pages/apropos.html"><i class="fas fa-chevron-right me-2 text-primary"></i>A propos</a></li>
+                                    <li class="mb-2"><a href="pages/contact.html"><i class="fas fa-chevron-right me-2 text-primary"></i>Contacts</a></li>
+                                    <li class="mb-2"><a href="pages/niveaux.html"><i class="fas fa-chevron-right me-2 text-primary"></i>Niveau</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><a href="#"><i class="fas fa-chevron-right me-2 text-primary"></i>Accueil</a></li>
+                                    <li class="mb-2"><a href="#"><i class="fas fa-chevron-right me-2 text-primary"></i>Témoignages</a></li>
+                                    <li class="mb-2"><a href="#"><i class="fas fa-chevron-right me-2 text-primary"></i>FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget">
+                        <div class="section-heading">
+                            <h3>Fonctionnalités Épatantes</h3>
+                            <div class="animate-border border-success my-3"></div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-item bg-primary p-3 rounded mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-bolt fa-2x text-warning me-3"></i>
+                                    <div>
+                                        <h5 class="mb-0">Téléchargement Rapide</h5>
+                                        <small>Accès instantané aux ressources</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-item bg-success p-3 rounded mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-infinity fa-2x text-white me-3"></i>
+                                    <div>
+                                        <h5 class="mb-0">Accès Illimité</h5>
+                                        <small>Toutes nos ressources sans restriction</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-item bg-info p-3 rounded">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-headset fa-2x text-white me-3"></i>
+                                    <div>
+                                        <h5 class="mb-0">Support 24/7</h5>
+                                        <small>Assistance à tout moment</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-widget">
+                        <div class="section-heading">
+                            <h3>Newsletter</h3>
+                            <div class="animate-border border-primary my-3"></div>
+                        </div>
+                        <p>Abonnez-vous pour recevoir nos dernières ressources</p>
+                        <form action="#">
+                            <div class="form-group mb-3">
+                                <input type="email" class="form-control" placeholder="Votre email" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-paper-plane me-2"></i>S'abonner
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright py-3 mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start">
+                            <span>Copyright © 2025, All Right Reserved Math-Info</span>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <a href="#" class="me-3">Politique de confidentialité</a>
+                            <a href="#">Conditions d'utilisation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup Form -->
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <span class="close-btn material-symbols-outlined">close</span>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2>Bienvenue</h2>
+                <p>Svp inscrivez-vous pour plus d'informations, c'est très important</p>
+            </div>
+            <div class="form-content">
+                <h2>SE CONNECTER</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Mot de Passe</label>
+                    </div>
+                    <a href="#" class="mot-de-pass-oublie">Mot de Passe oublié?</a>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <div class="bottom-link">
+                    Vous n'avez pas de compte?
+                    <a href="#" id="signup-link">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Créer un compte</h2>
+                <p>Svp inscrivez vos informations personnelles, c'est très important</p>
+            </div>
+            <div class="form-content">
+                <h2>S'INSCRIRE</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="email" required>
+                        <label>Entrez votre email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Créez votre mot de passe</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy" required>
+                        <label for="policy">
+                            J'accepte
+                            <a href="#">les termes et conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">S'inscrire</button>
+                </form>
+                <div class="bottom-link">
+                    Vous avez déjà un compte?
+                    <a href="#" id="login-link">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

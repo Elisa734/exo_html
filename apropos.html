@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Math-Info</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu: #3332c5;
+            --bleu-fonce: #2524a5;
+            --vert: #0cbf0c;
+            --vert-fonce: #09a309;
+            --bleu-clair: #f0f0ff;
+            --vert-clair: #f0fff0;
+            --gris: #f8f9fa;
+            --gris-fonce: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gris);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header amélioré */
+        header {
+            background: linear-gradient(135deg, var(--vert), var(--bleu));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-right: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .header-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Navigation améliorée */
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem !important;
+            margin: 0 0.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-nav .nav-link.active {
+            background-color: white;
+            color: var(--bleu) !important;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .login-btn {
+            background-color: white !important;
+            color: var(--bleu) !important;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(51, 50, 197, 0.4), rgba(12, 191, 12, 0.4)), url('images/math.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Contenu principal */
+        .main-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin: -3rem auto 3rem;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: var(--bleu);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--vert);
+            position: relative;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--vert);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--bleu);
+        }
+        
+        /* Cartes À propos */
+        .about-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--bleu-clair), var(--vert-clair));
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .about-icon {
+            font-size: 2.5rem;
+            color: var(--vert);
+            margin-bottom: 1rem;
+        }
+        
+        /* Statistiques */
+        .stats-section {
+            background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
+            color: white;
+            padding: 3rem 0;
+            margin: 3rem 0;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--vert);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Équipe */
+        .team-member {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .team-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--bleu);
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover .team-img {
+            transform: scale(1.05);
+            border-color: var(--vert);
+        }
+        
+        .team-social {
+            margin-top: 1rem;
+        }
+        
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--bleu);
+            color: white;
+            border-radius: 50%;
+            margin: 0 0.25rem;
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            background: var(--vert);
+            transform: translateY(-3px);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 3rem 0;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--vert), var(--bleu));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 30px;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bleu);
+            border: 3px solid var(--vert);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--bleu);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--vert);
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--vert);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-section {
+                padding: 3rem 0;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .main-container {
+                margin-top: -2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête amélioré -->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">
+                        <div class="logo-container">
+                            <img src="images/logomi.png" class="logo" alt="Logo Math-Info">
+                            <span class="header-title">Math-Info</span>
+                        </div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                                    À propos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#mission">Notre mission</a></li>
+                                    <li><a class="dropdown-item" href="#equipe">L'équipe</a></li>
+                                    <li><a class="dropdown-item" href="#histoire">Notre histoire</a></li>
+                                    <li><a class="dropdown-item" href="#chiffres">Chiffres clés</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="niveaux.html">Niveaux</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="infos.html">Actualités</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contacts</a>
+                            </li>
+                            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                                <a class="btn login-btn" href="#">SE CONNECTER</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title animate-fade">À Propos de Math-Info</h1>
+            <p class="hero-subtitle animate-fade delay-1">L'UFR Mathématiques et Informatique - Excellence académique et innovation pédagogique</p>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="container main-container">
+        <!-- Section Mission -->
+        <section id="mission" class="mb-5 animate-fade delay-2">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> Notre Mission</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="about-card">
+                        <div class="card-body text-center">
+                            <div class="about-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Formation d'excellence</h3>
+                            <p>Offrir des formations de haut niveau en mathématiques et informatique, adaptées aux besoins du marché et de la recherche.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="about-card">
+                        <div class="card-body text-center">
+                            <div class="about-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Recherche innovante</h3>
+                            <p>Développer une recherche de pointe et favoriser l'innovation dans nos domaines de spécialité.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="about-card">
+                        <div class="card-body text-center">
+                            <div class="about-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Communauté étudiante</h3>
+                            <p>Créer un environnement stimulant et inclusif pour nos étudiants, enseignants et chercheurs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Chiffres clés -->
+        <section id="chiffres" class="stats-section rounded animate-fade delay-3">
+            <div class="container">
+                <h2 class="text-center text-white mb-4"><i class="fas fa-chart-line me-2"></i>Math-Info en Chiffres</h2>
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-item">
+                            <div class="stat-number">1 500+</div>
+                            <div class="stat-label">Étudiants</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-item">
+                            <div class="stat-number">80+</div>
+                            <div class="stat-label">Enseignants</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Laboratoires</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-item">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Partenariats</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Équipe -->
+        <section id="equipe" class="mb-5 animate-fade">
+            <h2 class="section-title"><i class="fas fa-users"></i> Notre Équipe</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/jus.webp" alt="Directeur" class="team-img">
+                        <h4>Pr. Jean Kouassi</h4>
+                        <p class="text-muted"><em>Directeur de l'UFR</em></p>
+                        <p>Spécialiste en Algèbre Appliquée</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                            <a href="#"><i class="fas fa-file-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/cubedecomp.avif" alt="Directrice adjointe" class="team-img">
+                        <h4>Dr. Aïcha Diop</h4>
+                        <p class="text-muted"><em>Directrice Adjointe</em></p>
+                        <p>Expert en Intelligence Artificielle</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                            <a href="#"><i class="fas fa-file-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="images/jus.webp" alt="Responsable pédagogique" class="team-img">
+                        <h4>Dr. Mohamed Traoré</h4>
+                        <p class="text-muted"><em>Responsable Pédagogique</em></p>
+                        <p>Spécialiste en Bases de Données</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                            <a href="#"><i class="fas fa-file-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">Voir toute l'équipe</a>
+            </div>
+        </section>
+        
+        <!-- Section Histoire -->
+        <section id="histoire" class="animate-fade">
+            <h2 class="section-title"><i class="fas fa-history"></i> Notre Histoire</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1990</div>
+                    <h4>Création de l'UFR</h4>
+                    <p>Fondation de l'UFR Math-Info avec 3 enseignants et 50 étudiants.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2005</div>
+                    <h4>Premier laboratoire</h4>
+                    <p>Création du Laboratoire d'Informatique Fondamentale.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2012</div>
+                    <h4>Accréditation Master</h4>
+                    <p>Obtention de l'accréditation pour le Master en Data Science.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <h4>Modernisation</h4>
+                    <p>Rénovation complète des infrastructures et création de 5 nouveaux laboratoires.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="logo-container mb-3">
+                        <img src="images/télécharger (2).jpeg" class="logo" alt="Logo Math-Info">
+                        <span class="header-title">Math-Info</span>
+                    </div>
+                    <p>L'UFR Mathématiques et Informatique est un centre d'excellence pour la formation et la recherche dans les domaines des sciences mathématiques et informatiques.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Liens rapides</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="#mission">Notre mission</a></li>
+                            <li><a href="#equipe">L'équipe</a></li>
+                            <li><a href="niveaux.html">Formations</a></li>
+                            <li><a href="infos.html">Actualités</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-map-marker-alt me-2"></i> UFR Math-Info, Université</li>
+                            <li><i class="fas fa-phone me-2"></i> +225 XX XX XX XX</li>
+                            <li><i class="fas fa-envelope me-2"></i> contact@mathinfo.edu</li>
+                            <li><i class="fas fa-clock me-2"></i> Lundi-Vendredi: 8h-17h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 UFR Math-Info - Tous droits réservés | Conçu avec <i class="fas fa-heart text-danger"></i> pour les étudiants</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fade');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach((el, index) => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+            
+            // Smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

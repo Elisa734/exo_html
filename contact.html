@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Math-Info</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <style>
+        :root {
+            --bleu: #3332c5;
+            --vert: #0cbf0c;
+            --bleu-clair: #e6e6ff;
+            --vert-clair: #e6ffe6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bleu-clair);
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 80px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        
+        .navbar-brand h2 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+        
+        .login-btn {
+            background-color: white !important;
+            color: var(--bleu) !important;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        main {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(51, 50, 197, 0.2);
+        }
+        
+        h1 {
+            color: var(--bleu);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            border-radius: 3px;
+        }
+        
+        h3 {
+            color: var(--bleu);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vert);
+        }
+        
+        .contact-card {
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 3px solid var(--bleu);
+            border-bottom: 3px solid var(--vert);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: var(--bleu);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--vert);
+            text-decoration: underline;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--vert);
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--bleu);
+            box-shadow: 0 0 0 0.25rem rgba(51, 50, 197, 0.25);
+        }
+        
+        .btn-send {
+            background-color: var(--vert);
+            color: white;
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-send:hover {
+            background-color: #0aa30a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            font-size: 100px;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+        
+        .file-upload-label {
+            display: block;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border: 1px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload-label:hover {
+            background-color: #e9ecef;
+            border-color: var(--bleu);
+        }
+        
+        .file-name {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .department-select {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: var(--bleu);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--vert);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-brand h2 {
+                font-size: 1.2rem;
+            }
+            
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="index.html" class="navbar-brand p-0 d-flex flex-column align-items-center">
+                        <img src="images/logomi.png" class="logo" alt="Logo">
+                        <h2>Math-Info</h2>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-0 mx-lg-auto">
+                            <a href="index.html" class="nav-item nav-link">Accueil</a>
+                            <div class="nav-item dropdown">
+                                <a href="apropos.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    À propos
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="apropos.html" class="dropdown-item">Notre mission</a>
+                                    <a href="apropos.html" class="dropdown-item">L'équipe</a>
+                                </div>
+                            </div>
+                            <a href="niveaux.html" class="nav-item nav-link">Niveaux</a>
+                            <a href="infos.html" class="nav-item nav-link">Actualités</a>
+                            <a href="contact.html" class="nav-item nav-link active">Contacts</a>
+                          
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1><i class="fas fa-envelope me-2"></i> Contactez-nous</h1>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contact-card contact-info">
+                    <h3><i class="fas fa-map-marker-alt contact-icon"></i> Notre adresse</h3>
+                    <p>UFR Math-Info<br>
+                    Université Felix Houphouet Boigny(UFHB)<br>
+                    BP 1234 Abidjan Cocody<br>
+                    Côte d'Ivoire</p>
+                    
+                    <h3><i class="fas fa-clock contact-icon"></i> Heures d'ouverture</h3>
+                    <p>Lundi - Vendredi : 8h - 17h<br>
+                    Samedi : 9h - 13h<br>
+                    Dimanche : Fermé</p>
+                    
+                    <h3><i class="fas fa-phone-alt contact-icon"></i> Contacts directs</h3>
+                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:contact@mathinfo.edu">contact@mathinfo.edu</a></p>
+                    <p><i class="fas fa-phone me-2"></i> <a href="tel:+22512345678">+225 12 34 56 78</a></p>
+                    <p><i class="fas fa-mobile-alt me-2"></i> <a href="tel:+22598765432">+225 98 76 54 32</a></p>
+                    
+                    <h3><i class="fas fa-share-alt contact-icon"></i> Réseaux sociaux</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="contact-card">
+                    <h3><i class="fas fa-paper-plane contact-icon"></i> Envoyez-nous un message</h3>
+                    <form id="contactForm" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <select class="form-select department-select" required>
+                                <option value="" selected disabled>Choisissez le destinataire</option>
+                                <option value="scolarite">Service de scolarité</option>
+                                <option value="direction">Direction de l'UFR</option>
+                                <option value="professeur">Contacter un professeur</option>
+                                <option value="technique">Support technique</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Prénom" required>
+                            </div>
+                        </div>
+                        
+                        <input type="email" class="form-control" placeholder="Email" required>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Téléphone">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Niveau d'étude (ex: L1, M2)">
+                            </div>
+                        </div>
+                        
+                        <textarea class="form-control" rows="5" placeholder="Votre message" required></textarea>
+                        
+                        <div class="file-upload">
+                            <label for="fileInput" class="file-upload-label">
+                                <i class="fas fa-paperclip me-2"></i> Joindre un document
+                                <span class="file-name" id="fileName">Aucun fichier sélectionné</span>
+                            </label>
+                            <input type="file" class="file-upload-input" id="fileInput" name="document">
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="copyCheck">
+                            <label class="form-check-label" for="copyCheck">
+                                Recevoir une copie de ce message
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-send w-100">
+                            <i class="fas fa-paper-plane me-2"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marked-alt contact-icon"></i> Localisation</h3>
+                    <div class="ratio ratio-16x9">
+                        <!-- Intégration Google Maps -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.810316753358!2d-4.030584925018481!3d5.320385435172281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ebf4d5e7db3d%3A0x9a1e8b4c1c1c1c1c!2sUniversit%C3%A9%20F%C3%A9lix%20Houphou%C3%ABt-Boigny!5e0!3m2!1sfr!2sci!4v1620000000000!5m2!1sfr!2sci" 
+                                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+                    <p>© 2025 UFR Math-Info - Tous droits réservés</p>
+                </div>
+                <div class="col-md-6 text-md-end text-center">
+                    <p>Conçu avec <i class="fas fa-heart" style="color: #ff6b6b;"></i> pour les étudiants</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Afficher le nom du fichier sélectionné
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : "Aucun fichier sélectionné";
+            document.getElementById('fileName').textContent = fileName;
+        });
+        
+        // Gestion de l'envoi du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ici vous ajouteriez le code pour envoyer le formulaire
+            // Par exemple avec fetch() ou XMLHttpRequest
+            
+            // Simulation d'envoi réussi
+            alert('Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+            document.getElementById('fileName').textContent = "Aucun fichier sélectionné";
+        });
+        
+        // Pour une vraie implémentation, vous auriez besoin d'un script backend
+        // pour traiter l'envoi du formulaire et du fichier joint
+    </script>
+</body>
+</html>

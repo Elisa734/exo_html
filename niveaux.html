@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveaux - Math-Info</title>
+   <!-- Bootstrap CSS -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <style>
+        :root {
+            --bleu: #3332c5;
+            --vert: #0cbf0c;
+            --bleu-clair: #e6e6ff;
+            --vert-clair: #e6ffe6;
+            --bleu-fonce: #2a2999;
+            --vert-fonce: #0a9e0a;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bleu-clair);
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 80px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        
+        .navbar-brand h2 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+        }
+        
+        .nav-link.active, .dropdown-toggle.active {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+        
+        .login-btn {
+            background-color: white !important;
+            color: var(--bleu) !important;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        main {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(51, 50, 197, 0.2);
+        }
+        
+        h1 {
+            color: var(--bleu);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            border-radius: 3px;
+        }
+        
+        .level-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--bleu);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--vert);
+            font-weight: 600;
+        }
+        
+        .level-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.25rem;
+            border-bottom: none;
+        }
+        
+        .licence {
+            background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
+        }
+        
+        .master {
+            background: linear-gradient(135deg, var(--vert), var(--vert-fonce));
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--bleu);
+        }
+        
+        .etoile-badge {
+            background-color: #ffc107;
+            color: #333;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        
+        .specialization {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 10px;
+            border-radius: 50px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .btn-level {
+            border-radius: 50px;
+            font-weight: 500;
+            padding: 8px 20px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .btn-licence {
+            background-color: var(--bleu);
+            color: white;
+        }
+        
+        .btn-master {
+            background-color: var(--vert);
+            color: white;
+        }
+        
+        .btn-level:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            color: white;
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--vert), var(--bleu));
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-brand h2 {
+                font-size: 1.2rem;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            .card-header {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="index.html" class="navbar-brand p-0 d-flex flex-column align-items-center">
+                        <img src="images/logomi.png" class="logo" alt="Logo">
+                        <h2>Math-Info</h2>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-0 mx-lg-auto">
+                            <a href="index.html" class="nav-item nav-link">Accueil</a>
+                            <div class="nav-item dropdown">
+                                <a href="apropos.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    À propos
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="apropos.html" class="dropdown-item">Notre mission</a>
+                                    <a href="apropos.html" class="dropdown-item">L'équipe</a>
+                                </div>
+                            </div>
+                            <a href="niveaux.html" class="nav-item nav-link active">Niveaux</a>
+                            <a href="infos.html" class="nav-item nav-link">Actualités</a>
+                            <a href="contact.html" class="nav-item nav-link">Contacts</a>
+                            <div class="nav-btn px-3">
+                                <button class="btn login-btn py-2 px-4 ms-3 flex-shrink-0">SE CONNECTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1><i class="fas fa-graduation-cap me-2"></i> Parcours Académiques</h1>
+        
+        <div class="level-section">
+            <h2 class="section-title"><i class="fas fa-certificate me-2"></i> Programme ÉTOILE</h2>
+            <div class="row">
+                <!-- Licence 1 ÉTOILE -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">
+                            Licence 1 <span class="etoile-badge">ÉTOILE</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Tronc Commun</h5>
+                            <p class="card-text">Introduction aux bases fondamentales des mathématiques et de l'informatique avec un programme renforcé.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Mathématiques</span>
+                                <span class="specialization">Algorithmique</span>
+                                <span class="specialization">Programmation</span>
+                            </div>
+                            <a href="pages" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 2 ÉTOILE -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">
+                            Licence 2 <span class="etoile-badge">ÉTOILE</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Approfondissement</h5>
+                            <p class="card-text">Approfondissement des concepts avancés en mathématiques pures et en informatique théorique.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Algèbre avancée</span>
+                                <span class="specialization">Analyse complexe</span>
+                                <span class="specialization">Structures de données</span>
+                            </div>
+                            <a href="pages" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 3 ÉTOILE -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">
+                            Licence 3 <span class="etoile-badge">ÉTOILE</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Spécialisation</h5>
+                            <p class="card-text">Programme d'excellence pour les étudiants les plus motivés avec des cours spécialisés.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Mathématiques pures</span>
+                                <span class="specialization">Informatique théorique</span>
+                                <span class="specialization">Recherche</span>
+                            </div>
+                            <a href="pages" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="level-section">
+            <h2 class="section-title"><i class="fas fa-book me-2"></i> Licence Classique</h2>
+            <div class="row">
+                <!-- Licence 1 -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">Licence 1</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Tronc Commun</h5>
+                            <p class="card-text">Acquisition des bases en mathématiques et en informatique pour tous les étudiants.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Algèbre linéaire</span>
+                                <span class="specialization">Analyse</span>
+                                <span class="specialization">Programmation</span>
+                            </div>
+                            <a href="pages" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 2 -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">Licence 2</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Approfondissement</h5>
+                            <p class="card-text">Approfondissement en algèbre, analyse et programmation orientée objet.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Algèbre</span>
+                                <span class="specialization">Analyse</span>
+                                <span class="specialization">POO</span>
+                            </div>
+                            <a href="pages/" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 3 -->
+                <div class="col-md-4">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">Licence 3</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Spécialisation</h5>
+                            <p class="card-text">Spécialisation en mathématiques appliquées avec options au choix.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Maths appliquées</span>
+                                <span class="specialization">Statistiques</span>
+                                <span class="specialization">Modélisation</span>
+                            </div>
+                            <a href="pages/" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="level-section">
+            <h2 class="section-title"><i class="fas fa-laptop-code me-2"></i> Licence Sciences Informatiques</h2>
+            <div class="row">
+                <!-- Licence 2 SI -->
+                <div class="col-md-6">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">Licence 2 SI</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sciences Informatiques</h5>
+                            <p class="card-text">Programme axé sur les fondamentaux de l'informatique et des systèmes d'information.</p>
+                            <div class="mt-3">
+                                <span class="specialization">Algorithmique</span>
+                                <span class="specialization">Bases de données</span>
+                                <span class="specialization">Réseaux</span>
+                            </div>
+                            <a href="pages" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Licence 3 SI -->
+                <div class="col-md-6">
+                    <div class="level-card">
+                        <div class="card-header text-white licence">Licence 3 SI</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Spécialisation Informatique</h5>
+                            <p class="card-text">Approfondissement des technologies informatiques avec des cours spécialisés.</p>
+                            <div class="mt-3">
+                                <span class="specialization">BDGL</span>
+                                <span class="specialization">IA</span>
+                                <span class="specialization">Sécurité</span>
+                            </div>
+                            <a href="Licence3si.html" class="btn btn-licence mt-3">Découvrir <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="level-section">
+            <h2 class="section-title"><i class="fas fa-user-graduate me-2"></i> Masters</h2>
+            <div class="row">
+                <!-- Master 1 EDP -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 1</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Équations Différentielles</h5>
+                            <p class="card-text">Spécialisation en équations différentielles et applications.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 1 PROBA -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 1</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Probabilités</h5>
+                            <p class="card-text">Approfondissement des probabilités et processus stochastiques.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 1 FONDA -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 1</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fondamentaux</h5>
+                            <p class="card-text">Approfondissement des mathématiques fondamentales.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 1 SI -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 1 SI</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sciences Informatiques</h5>
+                            <p class="card-text">Spécialisation en bases de données et génie logiciel.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Master 2 EDP -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 2</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Équations Différentielles</h5>
+                            <p class="card-text">Recherche avancée en EDP et applications.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 2 PROBA -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 2</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Probabilités</h5>
+                            <p class="card-text">Recherche en probabilités et statistiques.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 2 FONDA -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 2</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fondamentaux</h5>
+                            <p class="card-text">Recherche en mathématiques fondamentales.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Master 2 SI -->
+                <div class="col-md-3">
+                    <div class="level-card">
+                        <div class="card-header text-white master">Master 2 SI</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sciences Informatiques</h5>
+                            <p class="card-text">Recherche en systèmes d'information avancés.</p>
+                            <a href="pages" class="btn btn-master mt-3">Détails <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+                    <p>© 2025 UFR Math-Info - Tous droits réservés</p>
+                </div>
+                <div class="col-md-6 text-md-end text-center">
+                    <p>Conçu avec <i class="fas fa-heart" style="color: #ff6b6b;"></i> pour les étudiants</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation des cartes au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.level-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Étudiant L3SI | Université</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu: #3332c5;
+            --bleu-fonce: #2524a5;
+            --vert: #0cbf0c;
+            --vert-fonce: #09a309;
+            --bleu-clair: #f0f0ff;
+            --vert-clair: #f0fff0;
+            --gris: #f8f9fa;
+            --gris-fonce: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gris);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header amélioré */
+        header {
+            background: linear-gradient(135deg, var(--vert), var(--bleu));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .header-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-subtitle {
+            font-weight: 300;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation améliorée */
+        .main-nav {
+            margin-top: 1.5rem;
+        }
+        
+        .nav-pills .nav-link {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.3rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pills .nav-link:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: white;
+            color: var(--bleu);
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .nav-pills .nav-link i {
+            margin-right: 8px;
+        }
+        
+        /* Bannière principale */
+        .hero-banner {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
+            border: 1px solid rgba(51, 50, 197, 0.1);
+        }
+        
+        /* Contenu principal */
+        .main-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin: 2rem auto;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: var(--bleu);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--vert);
+            position: relative;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--vert);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--bleu);
+        }
+        
+        /* Cartes de semestre */
+        .semester-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to bottom, var(--bleu-clair), var(--vert-clair));
+        }
+        
+        .semester-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .semester-header {
+            background: linear-gradient(to right, var(--bleu), var(--vert));
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .resource-list {
+            padding: 1rem;
+        }
+        
+        .resource-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-item:hover {
+            background-color: rgba(255,255,255,0.5);
+            padding-left: 5px;
+        }
+        
+        .resource-link {
+            color: var(--bleu);
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-link:hover {
+            color: var(--vert-fonce);
+        }
+        
+        .resource-link i {
+            color: var(--vert);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Vidéo section */
+        .video-section {
+            margin: 3rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Pied de page amélioré */
+        footer {
+            background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-logo {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--vert);
+        }
+        
+        .footer-links ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--vert);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .header-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-pills .nav-link {
+                padding: 0.5rem 1rem;
+                margin: 0.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .nav-pills {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .nav-pills .nav-link {
+                white-space: nowrap;
+            }
+            
+            .hero-banner {
+                height: 200px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logomi.png" class="logo" alt="Logo Université">
+                <div>
+                    <h1 class="header-title">Portail Étudiant L3SI</h1>
+                    <p class="header-subtitle">Université - UFR Mathématiques et Informatique</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#semestre1"><i class="fas fa-book"></i> Semestre 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#semestre2"><i class="fas fa-book"></i> Semestre 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#examens"><i class="fas fa-file-alt"></i> Examens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ressources"><i class="fas fa-download"></i> Ressources</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bannière principale -->
+    <div class="container">
+        <img src="images/corona-4938929_1280.webp" alt="Étudiants en informatique" class="hero-banner animate-fade">
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="container main-container animate-fade delay-1">
+        <section id="accueil">
+            <h2 class="section-title"><i class="fas fa-cloud-download-alt"></i> Portail de Téléchargement L3SI</h2>
+            <div class="alert alert-primary">
+                <i class="fas fa-info-circle me-2"></i> Accédez à toutes vos ressources académiques organisées par semestre et par matière.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-bleu"><i class="fas fa-graduation-cap me-2"></i>Semestre 1</h5>
+                            <p class="card-text">Retrouvez tous les cours, TD, examens et corrections du premier semestre.</p>
+                            <a href="#semestre1" class="btn btn-primary">Accéder au semestre 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-bleu"><i class="fas fa-graduation-cap me-2"></i>Semestre 2</h5>
+                            <p class="card-text">Accédez aux ressources du second semestre, y compris les projets et travaux pratiques.</p>
+                            <a href="#semestre2" class="btn btn-success">Accéder au semestre 2</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Semestre 1 -->
+        <section id="semestre1" class="mt-5">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Semestre 1</h2>
+            <p class="lead">Retrouvez ici l'ensemble des matières disponibles classées par cours, TD, examen et corrections.</p>
+            
+            <!-- Algorithme Avancés -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-code me-2"></i>ALGORITHME AVANCES</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 0_Généralité sur l'algorithme.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 0
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 1_Variables, Types, instructions et expressions.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 3_Les structures répétitives.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 4_Les tableaux.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 4
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 6_ Les sous-algorithme-Partie 4- Notions de récursivité 2.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 6
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 7_Partie 1-Les Structures de données.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 7 (partie 1)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/cours/Chapitre 7_Partie 2-Les Structures de données (1).pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 7 (partie 2)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/td/Travaux Dirigers_L3[2].pdf">
+                                <i class="far fa-file-pdf"></i> TD Algorithmique
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/algoavance/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Algorithmique
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Base de Données -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-database me-2"></i>BASE DE DONNEES</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/base de donnee.pdf">
+                                <i class="far fa-file-pdf"></i> Bases de données
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapiter1-Introduction aux bases de donnees.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapitre 3 - Modele Relationnel.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapitre 4 -1- Langage SQL.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 4 (partie 1)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapitre 4 -2- Langage SQL.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 4 (partie 2)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapitre2-1 - Modélisation  - Normalisation de BDD.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 2 (partie 1)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/cours/Chapitre2-2-Suite - Cours MLD.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 2 (partie 2)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD Base de données
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/basedonnee/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Base de données
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Genie Logiciel -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-cogs me-2"></i>GENIE LOGICIEL</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/genie logiciel.pdf">
+                                <i class="far fa-file-pdf"></i> Introduction
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/CHAPITRE 1.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/CHAPITRE 2.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 2
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/CHAPITRE3.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/CHAPITRE 4.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 4
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/Chapitre 5.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 5
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/Chapitre 5A.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 5A
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/cours/Résumé du cours de GL.pdf">
+                                <i class="far fa-file-pdf"></i> Résumé
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/td/QCM.pptx">
+                                <i class="far fa-file-powerpoint"></i> QCM
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/td/TD1DE GENIE LOGICIEL L3SI UFR MI-2024-2025.pdf">
+                                <i class="far fa-file-pdf"></i> TD1
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/genielogiciel/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir GL
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maintenance -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-tools me-2"></i>MAINTENANCE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 1 Presents v5.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 2 Presents (1).ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 2
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 3 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 4 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 4
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 5 Presents Part1.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 5 (partie 1)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 5 Presents Part2.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 5 (partie 2)
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 6 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 6
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 7 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 7
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 8 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 8
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/cours/IT Essentials Chapitre 9 Presents.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 9
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD Maintenance
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/maintenance/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Maintenance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merise -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-project-diagram me-2"></i>MERISE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/cours/formerise.pdf">
+                                <i class="far fa-file-pdf"></i> Cours 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/cours/Support MeriseL3.pdf">
+                                <i class="far fa-file-pdf"></i> Cours 2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/td/TD MERISE.pdf">
+                                <i class="far fa-file-pdf"></i> TD Merise 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/td/TD1 MERISE.pdf">
+                                <i class="far fa-file-pdf"></i> TD Merise 2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/merise/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Merise
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fondamentaux des réseaux -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-network-wired me-2"></i>FONDAMENTAUX DES RESEAUX</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C1_Introduction_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C2_Circuit_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 2
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C3_Liaison_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C4_WAN_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 4
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C5_LAN_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 5
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C6_IP_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 6
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C7_TCP_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 7
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C8_mobilite_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 8
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C9_securite_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 9
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/cours/C10_Synthese_15.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 10
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD Réseaux
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024-2025
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/reseaux/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Réseaux
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recherche Opérationnelle -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-chart-line me-2"></i>RECHERCHE OPERATIONNELLE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/cours/Prog Linéaire L3 UFRMI 20.pdf">
+                                <i class="far fa-file-pdf"></i> Programmation Linéaire
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/cours/Théorie des Graphes L3 UFRMI 2020.pdf">
+                                <i class="far fa-file-pdf"></i> Théorie des Graphes
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/td/TD RO.pdf">
+                                <i class="far fa-file-pdf"></i> TD RO
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/td/TD THEORIE DES GRAPHES L3 SI.pdf">
+                                <i class="far fa-file-pdf"></i> TD Théorie Graphes
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/td/TD2 THG UFRMI L3 22-23.pdf">
+                                <i class="far fa-file-pdf"></i> TD2 Théorie Graphes
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/examen/valideur-L3-2020.pdf">
+                                <i class="far fa-file-pdf"></i> Valideur 2020
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/examen/ancien_sujet1.pdf">
+                                <i class="far fa-file-pdf"></i> Ancien sujet 1
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/ro/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir RO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Théorie des Langages -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-language me-2"></i>THEORIE DES LANGAGES</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/theorielangage/cours/theorie des langages et compilation 2020 L3 informatique.pdf">
+                                <i class="far fa-file-pdf"></i> Cours complet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/theorielangage/td/TD 1.pdf">
+                                <i class="far fa-file-pdf"></i> TD 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/theorielangage/td/TD 2.pdf">
+                                <i class="far fa-file-pdf"></i> TD 2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/theorielangage/examens/ancien_sujet.pdf">
+                                <i class="far fa-file-pdf"></i> Ancien sujet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre1/theorielangage/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir THL
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Vidéo -->
+        <section class="video-section animate-fade delay-2">
+            <video autoplay muted loop style="width: 100%; height: auto;">
+                <source src="video/ARCHIVEMI (3).mp4" type="video/mp4">
+            </video>
+        </section>
+
+        <!-- Section Semestre 2 -->
+        <section id="semestre2" class="mt-5 animate-fade delay-3">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Semestre 2</h2>
+            <p class="lead">Retrouvez ici l'ensemble des matières disponibles classées par cours, TD, examen et corrections.</p>
+            
+            <!-- Admin Linux -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fab fa-linux me-2"></i>ADMIN LINUX</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/001-kathara-introduction.pdf">
+                                <i class="far fa-file-pdf"></i> Introduction
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/003-kathara-lab_two-hosts.pdf">
+                                <i class="far fa-file-pdf"></i> Lab Two Hosts
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/004-kathara-lab_static-routing.pdf">
+                                <i class="far fa-file-pdf"></i> Static Routing
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/005-kathara-lab_arp.pdf">
+                                <i class="far fa-file-pdf"></i> Lab ARP
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/008-kathara-lab_webserver.pdf">
+                                <i class="far fa-file-pdf"></i> Lab Web Server
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/010-kathara-lab_dns.pdf">
+                                <i class="far fa-file-pdf"></i> Lab DNS
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/cours-routage-dynamique.pdf">
+                                <i class="far fa-file-pdf"></i> Routage Dynamique
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/Initiation_administration_reseau_sous_linux___Dr_DIALLO__UFHB_2025.pdf">
+                                <i class="far fa-file-pdf"></i> Initiation Admin
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/fiche-kathara.pdf">
+                                <i class="far fa-file-pdf"></i> Fiche Kathara
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/td/CorrectionTP2.pdf">
+                                <i class="far fa-file-pdf"></i> Correction TP2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/examens/ADMIN Reseau sous Linux 2020-21L3SI session2.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2020
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/examens/ExamenRxByLinux2020-21.pdf">
+                                <i class="far fa-file-pdf"></i> Examen Réseaux
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/adminlinux/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Admin Linux
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anglais -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-language me-2"></i>ANGLAIS</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/Day 2.pdf">
+                                <i class="far fa-file-pdf"></i> Day 2
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/Day 3.pdf">
+                                <i class="far fa-file-pdf"></i> Day 3
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/day 5.pdf">
+                                <i class="far fa-file-pdf"></i> Day 5
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/day 6 class.pdf">
+                                <i class="far fa-file-pdf"></i> Day 6
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD Anglais
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/examens/Anciens Sujets Anglais.pdf">
+                                <i class="far fa-file-pdf"></i> Anciens sujets
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anglais/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Anglais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyse Numérique et Matricielle -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-calculator me-2"></i>ANALYSE NUMERIQUE ET MATRICIELLE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/AnaNumMat_ch1.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/AnaNumMat_ch2.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 2
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/AnaNumMat_ch3.pdf">
+                                <i class="far fa-file-pdf"></i> Chapitre 3
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/td/CTD3-6.pdf">
+                                <i class="far fa-file-pdf"></i> TD 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/td/FasciculeTDL3AnaNumMat.pdf">
+                                <i class="far fa-file-pdf"></i> Fascicule TD
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/anm/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir ANM
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big Data -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-database me-2"></i>BIG DATA</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/ChapI_INTRODUCTION.pdf">
+                                <i class="far fa-file-pdf"></i> Introduction
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/Support_BigData_1.pdf">
+                                <i class="far fa-file-pdf"></i> Support 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/Support_BigData_2.pdf">
+                                <i class="far fa-file-pdf"></i> Support 2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/td/exoBigData.txt">
+                                <i class="far fa-file-alt"></i> Exercices
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/td/Rech big data.txt">
+                                <i class="far fa-file-alt"></i> Recherche
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/td/TP1_ChapII.pdf">
+                                <i class="far fa-file-pdf"></i> TP1
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/bigdata/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Big Data
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programmation Orientée Objet -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-object-group me-2"></i>PROGRAMMATION ORIENTEE OBJET</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/cours/Fasc_POO_c++_2023.docx">
+                                <i class="far fa-file-word"></i> Fascicule POO
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/td/classe_derivée.cpp">
+                                <i class="far fa-file-code"></i> Classe Dérivée
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/examens/Dev_POO_Lic3_Miage_2019.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2019
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/examens/Exam_POO_ING1_ENSIT_ses1_2019.pdf">
+                                <i class="far fa-file-pdf"></i> Examen ENSIT
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/examens/Exam_POO_L3_INFO_UFRMI_ses1_2022.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2022
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/examens/Exam_POO_L3_SI_UFRMI_ses2_2019.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2019
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/examens/Exam_POO_lic3_INFO_UNISAT_ses1_2022.pdf">
+                                <i class="far fa-file-pdf"></i> Examen UNISAT
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/poo/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir POO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programmation Web -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-globe me-2"></i>PROGRAMMATION WEB</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/programmationweb/cours/Programmation web.pdf">
+                                <i class="far fa-file-pdf"></i> Cours complet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/programmationweb/td/tp1.pdf">
+                                <i class="far fa-file-pdf"></i> TP1
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/programmationweb/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/programmationweb/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Web
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entrepreneuriat -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-briefcase me-2"></i>ENTREPRENEURIAT</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/entrepreneuriat/cours/COURS INTRODUCTION A L'ENTREPREUNARIAT.pdf">
+                                <i class="far fa-file-pdf"></i> Introduction
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/entrepreneuriat/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD Entrepreneuriat
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/entrepreneuriat/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/entrepreneuriat/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Entrepreneuriat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eléments de Calcul Scientifique -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-square-root-alt me-2"></i>ELEMENTS DE CALCUL SCIENTIFIQUE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/cours/Calcul_Scientifique_L3_IF_OKOU.pdf">
+                                <i class="far fa-file-pdf"></i> Cours complet
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/cours/REVISION.pdf">
+                                <i class="far fa-file-pdf"></i> Révisions
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/td/td2.pdf">
+                                <i class="far fa-file-pdf"></i> TD2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/examens/Exam_L3_UFRMI_Calcul_Scientifique_2020.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2020
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/examens/Exam_L3_UFRMI_Calcul_Scientifique_2021.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2021
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/calculscientifique/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir ECS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-database me-2"></i>DATABASE</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/cours/Chapter 1 - Introduction.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/cours/Chapter 2 - Introduction to Relational Model.ppt">
+                                <i class="far fa-file-powerpoint"></i> Chapitre 2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/td/td2.pdf">
+                                <i class="far fa-file-pdf"></i> TD2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/database/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Database
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Système d'Exploitation -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-desktop me-2"></i>SYSTEME D'EXPLOITATION</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/systeme/cours/Cours-systeme-exploitation-os_L3SI_2024-2025.ppt">
+                                <i class="far fa-file-powerpoint"></i> Cours complet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/systeme/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/systeme/td/td2.pdf">
+                                <i class="far fa-file-pdf"></i> TD2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/systeme/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/systeme/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir Système
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technique d'Expression -->
+            <div class="card semester-card mb-4">
+                <div class="semester-header">
+                    <h4><i class="fas fa-comment-dots me-2"></i>TECHNIQUE D'EXPRESSION</h4>
+                </div>
+                <div class="row resource-list">
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-alt me-2"></i>Cours</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/cours/Exercices-proposition-subordonnee-conjonctive.pdf">
+                                <i class="far fa-file-pdf"></i> Subordonnée Conjonctive
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/cours/Exercices-proposition-subordonnee-relative.pdf">
+                                <i class="far fa-file-pdf"></i> Subordonnée Relative
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-tasks me-2"></i>TD</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/td/td1.pdf">
+                                <i class="far fa-file-pdf"></i> TD1
+                            </a>
+                        </div>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/td/td2.pdf">
+                                <i class="far fa-file-pdf"></i> TD2
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-file-signature me-2"></i>Examens</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/examens/examen_2024.pdf">
+                                <i class="far fa-file-pdf"></i> Examen 2024
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><i class="fas fa-edit me-2"></i>Devoirs</h5>
+                        <div class="resource-item">
+                            <a href="docs/licence3si/semestre2/technique/devoir/devoir1.pdf">
+                                <i class="far fa-file-pdf"></i> Devoir TE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page amélioré -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="..assets/images/télécharger (2).jpeg" class="footer-logo" alt="Logo Université">
+                    <h5 class="footer-title mt-2">Portail Étudiant L3SI</h5>
+                    <p>Plateforme de ressources académiques pour les étudiants en Licence 3 Sciences Informatiques.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Liens rapides</h5>
+                        <ul>
+                            <li><a href="#semestre1">Semestre 1</a></li>
+                            <li><a href="#semestre2">Semestre 2</a></li>
+                            <li><a href="#examens">Anciens examens</a></li>
+                            <li><a href="#ressources">Ressources</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contacts</h5>
+                        <ul>
+                            <li><i class="fas fa-envelope me-2"></i> contact@univ.edu</li>
+                            <li><i class="fas fa-phone me-2"></i> +225 XX XX XX XX</li>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> UFR MI, Université</li>
+                            <li><i class="fas fa-clock me-2"></i> Lundi-Vendredi: 8h-17h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Université - UFR Mathématiques et Informatique. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.semester-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
